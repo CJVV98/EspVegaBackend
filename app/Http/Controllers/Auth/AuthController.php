@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Notifications\SignupActivate;
-use App\Models\user; 
+use App\Models\User; 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;

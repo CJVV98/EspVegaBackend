@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             "name" => isset($this->name) ? $this->name : null,
             "email" => isset($this->email) ? $this->email : null,
             "lastname" => isset($this->lastname) ? $this->lastname : null,
+            "address" => isset($this->address) ? $this->address : null,
             "phone" => isset($this->phone) ? $this->phone : null,
             "active" => isset($this->active) ? $this->active : null,
             "code" => isset($this->code) ? $this->code : null

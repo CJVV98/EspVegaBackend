@@ -3,6 +3,7 @@
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);
 Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', 'edit']]);
+Route::resource('pqr', 'PQR\PqrController', ['except' => ['create', 'edit']]);
 Route::group([
     'namespace' => 'Auth',
     'middleware' => 'api',

@@ -3,8 +3,9 @@
 namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\Pqr; 
-class NewResource extends JsonResource
+class PqrResource extends JsonResource
 {
+    
     /**
      * Transform the resource into an array.
      *

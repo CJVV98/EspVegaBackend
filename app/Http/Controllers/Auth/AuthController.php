@@ -23,6 +23,7 @@ class AuthController extends Controller
             'name' => 'required|string',
             'lastname' => 'required|string',
             'phone' => 'required|string',
+            'address' => 'required|string',
             'code' => 'required|string|unique:users',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string'

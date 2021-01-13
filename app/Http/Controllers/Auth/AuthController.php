@@ -36,9 +36,12 @@ class AuthController extends Controller
             'activation_token' => Str::random(60),
             'phone' => $request->phone,
             'code' => $request->code,
+            'address'=> $request->address,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+
         $user->save();
         $user->notify(new SignupActivate($user));
         return response()->json('success', 201);    
@@ -94,6 +97,7 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
+        
         $request->user()->token()->revoke();
         return response()->json([
             'message' => 'Successfully logged out'

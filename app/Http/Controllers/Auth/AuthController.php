@@ -35,8 +35,8 @@ class AuthController extends Controller
             'lastname' => $request->lastname,
             'activation_token' => Str::random(60),
             'phone' => $request->phone,
-            'code' => $request->code,
             'address'=> $request->address,
+            'code' => $request->code,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
@@ -97,7 +97,7 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        
+
         $request->user()->token()->revoke();
         return response()->json([
             'message' => 'Successfully logged out'

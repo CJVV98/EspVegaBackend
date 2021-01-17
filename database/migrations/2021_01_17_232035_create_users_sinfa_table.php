@@ -14,8 +14,10 @@ class CreateUsersSinfaTable extends Migration
     public function up()
     {
         Schema::create('users_sinfa', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('id');
+            $table->string('names');
+            $table->string('address');
+            $table->integer('cod_id');
         });
     }
 

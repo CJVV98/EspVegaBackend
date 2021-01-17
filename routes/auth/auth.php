@@ -1,5 +1,7 @@
   
 <?php
+Route::resource('invoices', 'Invoice\InvoiceController',  ['except' => ['create', 'edit']]);
+Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);
 Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', 'edit']]);

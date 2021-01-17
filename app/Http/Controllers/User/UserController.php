@@ -50,7 +50,8 @@ class UserController extends ApiController
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return $user;
     }
 
     /**

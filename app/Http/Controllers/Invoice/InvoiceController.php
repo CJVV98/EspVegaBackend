@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Invoice;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Invoice;
+use App\Http\Controllers\Api\ApiController;
 
-class InvoiceController extends Controller
+class InvoiceController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        return Invoice::all();
     }
 
     /**
@@ -27,16 +29,7 @@ class InvoiceController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified resource.
@@ -44,9 +37,13 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $code = (int) $request->code;
+        $invoice = Invoice::where('code', $code)->get();
+        return response()->json([
+            'data'=>$invoice,  
+        ]);
     }
 
     /**

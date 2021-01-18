@@ -89,11 +89,12 @@ class PointsPaysController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PointsPays $pointsPays)
+    public function destroy($id)
     {
-        $pointsPays->delete();
+        $points = PointsPays::find($id);
+        $points->delete();
         return $this->api_success([
-            'data' => new PointsPaysResource($pointsPays),
+            'data' => new PointsPaysResource($points),
             'message' => __('pages.responses.delete'),
             'code' => 200
         ], 200);

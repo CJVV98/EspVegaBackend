@@ -88,8 +88,13 @@ class NewsController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        $news->delete();
+        return $this->api_success([
+            'data' => new NewsResource($news),
+            'message' => __('pages.responses.created'),
+            'code' => 201
+        ], 201);
     }
 }

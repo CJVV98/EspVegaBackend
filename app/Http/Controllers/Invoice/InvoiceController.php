@@ -40,9 +40,11 @@ class InvoiceController extends ApiController
     public function show(Request $request)
     {
         $code = (int) $request->code;
-        $invoice = Invoice::where('code', $code)->get();
+        $date = $request->date;
+        $invoice = Invoice::where('code','=', $code)
+                          ->where('date_issue','=', $date)->first();
         return response()->json([
-            'data'=>$invoice,  
+            'data'=>$invoice
         ]);
     }
 

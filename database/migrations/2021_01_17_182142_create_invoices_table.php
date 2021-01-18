@@ -18,7 +18,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('code');
             $table->integer('cod_invoice');
             $table->integer('total');
-            $table->date('date_issue');
+            $table->string('date_issue');
             $table->timestamps();
         });
     }

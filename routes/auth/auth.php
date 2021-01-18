@@ -1,6 +1,7 @@
   
 <?php
 Route::resource('invoices', 'Invoice\InvoiceController',  ['except' => ['create', 'edit']]);
+Route::get('invoice/{code}', 'Invoice\InvoiceController@showInvoices');
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('usersinfa', 'User\UserSinfaController', ['except' => ['create', 'edit']]);
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);

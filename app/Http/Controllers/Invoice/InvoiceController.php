@@ -81,4 +81,16 @@ class InvoiceController extends ApiController
     {
         //
     }
+
+    /**
+     * 
+     */
+
+    public function showInvoices($code)
+    {
+        $invoices = Invoice::where('code','=', $code)->get();
+        return response()->json([
+            'data'=>$invoices
+        ]);
+    }
 }

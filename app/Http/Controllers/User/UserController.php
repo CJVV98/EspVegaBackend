@@ -85,7 +85,13 @@ class UserController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return $this->api_success([
+            'data' => new UserResource($user),
+            'message' => __('pages.responses.delete'),
+            'code' => 200
+        ], 200);
     }
 
 

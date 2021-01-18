@@ -93,8 +93,9 @@ class PointsPaysController extends ApiController
     {
         $points->delete();
         return $this->api_success([
-            'message'   => __('Eliminacion exitosa'),
-            'code'      =>  200
+            'data' => new PointsPaysResource($points),
+            'message' => __('pages.responses.delete'),
+            'code' => 200
         ], 200);
     }
 }

@@ -92,8 +92,8 @@ class NewsController extends ApiController
     {
         $news->delete();
         return $this->api_success([
-            'data' => new NewsResource($news),
-            'message' => __('pages.responses.created'),
+            'data' => new NewResource($news),
+            'message' => __('pages.responses.delete'),
             'code' => 201
         ], 201);
     }

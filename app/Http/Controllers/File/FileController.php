@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\File;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ApiController;
 
-class FileController extends Controller
+
+class FileController extends ApiController
 {
     public function store(Request $request)
     {

@@ -78,7 +78,7 @@ class NewsController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewsRequest $request, News $news)
+    public function update(Request $request, News $news)
     {
         if ($request->has("title")) {
             $news->title = $request->title;

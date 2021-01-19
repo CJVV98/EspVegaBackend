@@ -10,7 +10,7 @@ class FileController extends Controller
     {
 
         if ($request->hasFile('url_file')) {
-            $url = $request->url_image->store('public');
+            $url = $request->url_file->store('public');
         }
         return response()->json('save file', 201);
     }

@@ -56,7 +56,8 @@ class NewsController extends ApiController
      */
     public function show($id)
     {
-        //
+        $news = News::findOrFail($id);
+        return $news;
     }
 
     /**
@@ -77,9 +78,40 @@ class NewsController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateNewsRequest $request, News $news)
     {
-        //
+        if ($request->has("title")) {
+            $news->title = $request->title;
+        }
+        if ($request->has("autor")) {
+            $news->autor = $request->autor;
+        }
+        if ($request->has("content")) {
+            $news->content = $request->content;
+        }
+        if ($request->has("url_resource")) {
+            $news->url_resource = $request->url_resource;
+        }
+        if ($request->has("url_image")) {
+            Storage::delete($news->url_image);
+            $news->url_image = $request->url_image->store('images');
+        }
+
+
+        if (!$news->isDirty()) {
+            return $this->errorResponse(
+                'Se debe especificar al menos un valor diferente para actualizar',
+                422
+            );
+        }
+
+        $news->saveOrFail();
+
+        return $this->api_success([
+            'data'      =>  new NewResource($news),
+            'message'   => __('pages.responses.updated'),
+            'code'      =>  201
+        ], 201);
     }
 
     /**

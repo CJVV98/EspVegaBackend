@@ -7,6 +7,7 @@ Route::resource('usersinfa', 'User\UserSinfaController', ['except' => ['create',
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);
 Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', 'edit']]);
 Route::resource('pqr', 'PQR\PqrController', ['except' => ['create', 'edit']]);
+Route::resource('file', 'File\FileController', ['except' => ['create', 'edit']]);
 Route::resource('pqrans', 'PQR\PqrAnsweredController', ['except' => ['create', 'edit']]);
 
 Route::group([

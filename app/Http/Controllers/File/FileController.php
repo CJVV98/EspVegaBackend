@@ -12,7 +12,7 @@ class FileController extends ApiController
     {
 
         if ($request->hasFile('url_file')) {
-            $url = $request->url_file->store('public');
+            $url = $request->url_file->store('documents');
         }
         return response()->json('save file', 201);
     }

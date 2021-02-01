@@ -66,7 +66,7 @@ return [
     */
 
     'links' => [
-        public_path('images') => storage_path('app/images')
+        public_path('images') => storage_path('app/images'),
         public_path('documents') => storage_path('app/documents')
     ],
 

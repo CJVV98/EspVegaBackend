@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use Illuminate\Support\Facades\Storage;
 use App\Models\PointsPays; 
-
+use Illuminate\Support\Facades\DB;
 class PointsPaysController extends ApiController
 {
      /**
@@ -96,6 +96,14 @@ class PointsPaysController extends ApiController
         return $this->api_success([
             'data' => new PointsPaysResource($points),
             'message' => __('pages.responses.delete'),
+            'code' => 200
+        ], 200);
+    }
+
+    public function count(){
+        $count = DB::table('points_pays')->count();
+        return $this->api_success([
+            'data' => $count,
             'code' => 200
         ], 200);
     }

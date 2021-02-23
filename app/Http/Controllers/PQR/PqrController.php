@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use App\Models\Pqr; 
-
+use Illuminate\Support\Facades\DB;
 class PqrController extends ApiController
 {
      /**
@@ -103,4 +103,12 @@ class PqrController extends ApiController
         'data'=>$pqrs
     ]);
    }
+
+   public function count(){
+    $count = DB::table('pqrs')->count();
+    return $this->api_success([
+        'data' => $count,
+        'code' => 200
+    ], 200);
+}
 }

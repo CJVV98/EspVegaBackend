@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\UserResource; 
-
+use Illuminate\Support\Facades\DB;
 class UserController extends ApiController
 {
     /**
@@ -98,5 +98,20 @@ class UserController extends ApiController
     public function getEmail(){
 
         
+    }
+
+    
+    public function count(){
+        $countUser = DB::table('users')->count();
+        $countSinfa = DB::table('users_sinfa')->count();
+        $countPqr = DB::table('pqrs')->count();
+        $countPoints = DB::table('points_pays')->count();
+        return $this->api_success([
+            'data' => $countUser,
+            'dataSinfa' => $countSinfa,
+            'dataPqr' => $countPqr,
+            'dataPoints' => $countPoints,
+            'code' => 200
+        ], 200);
     }
 }

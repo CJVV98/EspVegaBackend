@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\News; 
 use Carbon\Carbon;
 
+
 class NewsController extends ApiController
 {
     /**
@@ -22,6 +23,7 @@ class NewsController extends ApiController
         return $this->collectionResponse(NewResource::collection($this->getModel(new News, [])));
     }
 
+    
 
   
 
@@ -139,4 +141,5 @@ class NewsController extends ApiController
             'code' => 200
         ], 200);
     }
+
 }

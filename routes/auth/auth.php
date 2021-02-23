@@ -5,10 +5,14 @@ Route::get('invoice/{code}', 'Invoice\InvoiceController@showInvoices');
 Route::get('pqrresponse/', 'PQR\PqrController@showNoAnswered');
 Route::get('notifications/{code}', 'Invoice\InvoiceController@consultNotification');
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+Route::get('users-count', 'User\UserController@count');
 Route::resource('usersinfa', 'User\UserSinfaController', ['except' => ['create', 'edit']]);
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);
 Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', 'edit']]);
+Route::get('points-count', 'Pays\PointsPaysController@count');
+Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', 'edit']]);
 Route::resource('pqr', 'PQR\PqrController', ['except' => ['create', 'edit']]);
+Route::get('pqr-count', 'PQR\PqrController@count');
 Route::resource('file', 'File\FileController', ['except' => ['create', 'edit']]);
 Route::resource('pqrans', 'PQR\PqrAnsweredController', ['except' => ['create', 'edit']]);
 

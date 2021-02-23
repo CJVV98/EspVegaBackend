@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Http\Controllers\Api\ApiController;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 class InvoiceController extends ApiController
 {
     /**
@@ -91,6 +92,21 @@ class InvoiceController extends ApiController
         $invoices = Invoice::where('code','=', $code)->get();
         return response()->json([
             'data'=>$invoices
+        ]);
+    }
+
+    public function consultNotification($code)
+    {
+        $date=Carbon::now();
+        $dateinitial=Carbon::now();
+        $dateinitial=$dateinitial->addDay(5);
+   
+        $invoices = Invoice::where(DB::raw("STR_TO_DATE(date_issue, '%d/%m/%Y')"), '<', $dateinitial->toDateString())->where(DB::raw("STR_TO_DATE(date_issue, '%d/%m/%Y')"), '>=', $date->toDateString())
+                            ->where('code', '=', $code)->get();
+        return response()->json([
+            'data'=>$invoices,
+            'data2'=>$dateinitial,
+            'data3'=>$code,
         ]);
     }
 }

@@ -2,6 +2,8 @@
 <?php
 Route::resource('invoices', 'Invoice\InvoiceController',  ['except' => ['create', 'edit']]);
 Route::get('invoice/{code}', 'Invoice\InvoiceController@showInvoices');
+Route::get('pqrresponse/', 'PQR\PqrController@showNoAnswered');
+Route::get('notifications/{code}', 'Invoice\InvoiceController@consultNotification');
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('usersinfa', 'User\UserSinfaController', ['except' => ['create', 'edit']]);
 Route::resource('news', 'News\NewsController', ['except' => ['create', 'edit']]);
@@ -9,6 +11,7 @@ Route::resource('points', 'Pays\PointsPaysController', ['except' => ['create', '
 Route::resource('pqr', 'PQR\PqrController', ['except' => ['create', 'edit']]);
 Route::resource('file', 'File\FileController', ['except' => ['create', 'edit']]);
 Route::resource('pqrans', 'PQR\PqrAnsweredController', ['except' => ['create', 'edit']]);
+
 
 Route::group([
     'namespace' => 'Auth',
@@ -21,6 +24,7 @@ Route::group([
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm');
     Route::post('password/reset', 'ResetPasswordController@reset');
     Route::post('login', 'AuthController@login');
+    Route::post('loginAdmin', 'AuthController@loginAdmin');
     Route::post('signup', 'AuthController@signup');
     Route::get('signup/activate/{token}', 'AuthController@signupActivate');
     Route::group([

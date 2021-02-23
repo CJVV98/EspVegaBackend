@@ -95,4 +95,12 @@ class PqrController extends ApiController
            'code'      =>  200
        ], 200);
    }
+
+   public function showNoAnswered()
+   {
+       $pqrs=Pqr::where('status','=', '0')->get();
+       return response()->json([
+        'data'=>$pqrs
+    ]);
+   }
 }
